@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html ng-app="crudApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS CRUD Example</title>
+
+    <script src="assets/js/color-modes.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/jumbotron/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link href="stylesheet" type="text/css" href="modals.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+
+      <div class="container py-4">
+        <header class="pb-3 mb-2">
+            <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
+                <img src="logo.PNG" alt="idsNext logo">
+            </a>
+          </header>
+          <div class="p-4 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-4">
+                <div class="row mb-3">
+                    <h3 class="display-7 fw-bold" style="font-size: 1.25rem;">Angular - Crud Operation</h3>
+                </div>
+                <div ng-controller="CrudController as ctrl" class="crud-container">
+                    <div class="row align-items-md-stretch">
+                    <div class="col-md-6">
+                        <div class="form-section">
+                            <div class="form-frame">
+                               
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" ng-model="ctrl.newItem.name" placeholder="Enter Your Name">
+                                </div>
+                                <div class="form-group pt-3">
+                                    <label>Designation</label>
+                                    <select ng-model="ctrl.newItem.designation" class="form-select">
+                                        <option value="">Select Designation</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="Developer">Developer</option>
+                                        <option value="IT Manager">IT Manager</option>
+                                        <option value="Clerk">Clerk</option>
+                                    </select>
+                                </div>
+                                <div class="form-group pt-3">
+                                    <label>Salary</label>
+                                    <input type="number" ng-model="ctrl.newItem.salary" placeholder="Enter the Salary">
+                                </div>
+
+                                <div class="d-flex gap-2 justify-content-end py-4" style="margin-right: 25px;">
+                                    
+                                    <button ng-click="ctrl.resetForm()" class="btn btn-outline-secondary button reset" type="button">
+                                        Reset                                      </button>
+                                    <button ng-click="ctrl.addItem()" class="btn btn-primary button save" type="button">
+                                        {{ctrl.isEditing ? 'Update' : 'Save'}}
+                                    </button>
+                                    
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="table-section">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Designation</th>
+                                        <th>Salary</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in ctrl.items">
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.designation }}</td>
+                                        <td>{{ item.salary }}</td>
+                                        <td>
+                                            <div class="d-flex gap-4 justify-content-start">
+                                            <a data-toggle="modal" data-target="#myModal"><i class="fa fa-trash ico"></i></a>    
+                                            <a ng-click="ctrl.editItem($index)"><i class="fa fa-pencil ico"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border-radius: unset;">
+  
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <p class="text-center">Are you sure you want to delete this entry?</p>
+        </div>
+  
+        <!-- Modal Footer -->
+        <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+          <button style="background-color: #fb7a46;;" ng-click="ctrl.deleteItem($index)" type="button" class="btn btn-primary " data-dismiss="modal">Confirm</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  
+  
+
+       
+      <!-- Bootstrap JavaScript and dependencies -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ 
+  
+
+</body>
+</html> 
